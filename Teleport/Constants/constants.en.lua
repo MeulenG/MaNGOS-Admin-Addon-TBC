@@ -27,6 +27,7 @@ AL:RegisterTranslations("enUS", function() return {
     ["Search"] = true,
     ["Clear"] = true,
     ["Teleport"] = true,
+    ["GMCommands"] = true,
     ["Select Sub-Table"] = true,
     ["Drop Rate: "] = true,
     ["DKP"] = true,

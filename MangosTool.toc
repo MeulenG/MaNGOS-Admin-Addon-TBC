@@ -7,6 +7,8 @@
 ## SavedVariablesPerCharacter: AtlasLootCharDB
 ## OptionalDeps: Alphamap, AtlasLoader, LootLink, ItemSync, FuBar, TabletLib, DewdropLib, FuBarPlugin-2.0, FuBar, Ace2, EquipCompare, LibBabble-Boss-3.0, LibBabble-Class-3.0, LibBabble-Faction-3.0, LibBabble-Inventory-3.0, LibBabble-Zone-3.0
 
+Helpers\Helpers.lua
+
 embeds.xml
 
 Teleport\Constants\Constants.xml
@@ -14,7 +16,9 @@ Teleport\Core\MangosToolTeleport.xml
 Teleport\DefaultFrame\Locations.lua
 Teleport\DefaultFrame\MangosToolTeleportFrame.xml
 
-GMCommands\Core\GMCommnads.xml
+GMCommands\Core\GMCommands.lua
+GMCommands\Core\GMCommands.xml
+GMCommands\Core\Commands.lua
 GMCommands\DefaultFrame\MangosToolGMCommandsFrame.xml
 
 AddItems\Core\AddItems.xml

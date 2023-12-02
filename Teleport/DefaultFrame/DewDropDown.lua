@@ -12,7 +12,7 @@ local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
 AtlasLoot_DewDropDown = {
 	[1] = {
 		[AL["Eastern Kingdoms"]] = {
-			[1] = { 
+			[1] = {
 				[BabbleZone["Alterac Mountains"]] = {
 					{ BabbleZone["Blackrock Camp"], "Blackrock Camp"},
 					{ BabbleZone["Chillwind Point"], "Chillwind Point"},

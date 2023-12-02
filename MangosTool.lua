@@ -32,11 +32,11 @@ function MangosTool_ShowTab(tabId)
     end
     if tabId == 2 then
         MangosToolAddItemsFrame:Show()
-        MangosTool_Hide()
+        MangosTool:Hide()
     end
     if tabId == 3 then
         MangosToolGMCommandsFrame:Show()
-        MangosTool_Hide()
+        MangosTool:Hide()
     end
 end
 

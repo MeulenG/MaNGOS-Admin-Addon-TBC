@@ -1,0 +1,148 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <Script file="Commands.lua"/>
+	<Script file="GMCommands.lua"/>
+	
+    <GameTooltip name="AtlasLootTooltip" inherits="GameTooltipTemplate" parent="UIParent" hidden="true"/>
+    
+	<Frame name="AtlasLootInfo" hidden="false">
+		<Size>
+			<AbsDimension x="128" y="75"/>
+		</Size>
+        <Frames>
+            <Button name="$parentHidePanel" inherits="OptionsButtonTemplate">
+                <Size>
+                    <AbsDimension x="140" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="-5" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnShow>
+                        local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+                        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+                        this:SetText(AL["Toggle AL Panel"]);
+                    </OnShow>
+                    <OnClick>
+                        if AtlasLoot.db.profile.HidePanel then
+                            AtlasLoot.db.profile.HidePanel = false;
+                            if (AtlasFrame) then
+                                if AtlasFrame:IsVisible() then
+                                    AtlasLootPanel:Show();
+                                end
+                            end
+                        else
+                            AtlasLoot.db.profile.HidePanel = true;
+                            if (AtlasFrame) then
+                                if AtlasFrame:IsVisible() then
+                                    AtlasLootPanel:Hide();
+                                end
+                            end
+                        end
+                        AtlasLootOptionsFrameHidePanel:SetChecked(AtlasLoot.db.profile.HidePanel);
+                        AtlasLoot_SetupForAtlas();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_Text1" inherits="GameFontNormalSmall" text="ATLASLOOT_VERSION" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="180" y="10"/>
+					</Size>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="25"/>
+                        </Offset>
+                    </Anchor>
+				</FontString>
+				<FontString name="$parent_Text2" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="180" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent_Text1" relativePoint="BOTTOMLEFT">
+ 							<Offset>
+ 								<AbsDimension x="0" y="-2"/>
+ 							</Offset>
+			 			</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="AtlasLootItemsFrame" parent="UIParent" hidden="true">
+		<Size>
+			<AbsDimension x="510" y="510"/>
+		</Size>
+		<Anchors>
+ 			<Anchor point="CENTER"/>
+ 		</Anchors>
+		<Frames>
+            <Button name="$parent_CloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-5" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+                <Scripts>
+                    <OnClick>
+                        AtlasLootItemsFrame_OnCloseButton();
+                    </OnClick>
+                    <OnShow>
+				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+			        </OnShow>
+                </Scripts>
+			</Button>
+		</Frames>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Back">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+					<Color r="0" g="0" b="0" a="0.7"/>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="AtlasLoot_BossName" inherits="GameFontHighlightLarge" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="512" y="30"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parent" relativePoint="TOP"/>
+					</Anchors>
+				</FontString>
+                <FontString name="AtlasLoot_QuickLooks" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="200" y="25"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOM" relativeTo="$parent" relativePoint="BOTTOM">
+                            <Offset>
+                                <AbsDimension x="-185" y="6"/>
+                            </Offset>
+                        </Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				MangosToolGMCommands_OnLoad();
+                local AL = AceLibrary("AceLocale-2.2"):new("AtlasLoot");
+			</OnLoad>
+			<OnEvent>
+				MangosToolGMCommands_OnEvent(event, arg1, arg2);
+			</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>

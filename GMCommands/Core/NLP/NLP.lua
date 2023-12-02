@@ -123,10 +123,9 @@ end
 
 
 local model = BasicNLPModel.new()
-model:train(Dataset)
-
-local label = model:predict("This is a test sentence.")
-print(label)  -- Expected: "positive"
+model:train(Dataset_Items)
+model:train(Dataset_Teleport)
+model:train(Dataset_regions)
 
 local predictedLabel = model:predict(userInput)
 

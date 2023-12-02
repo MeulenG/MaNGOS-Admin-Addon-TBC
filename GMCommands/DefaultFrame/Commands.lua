@@ -15,6 +15,7 @@ commands['account'] = {
         else
             Print("Invalid use of command")
         end
+        SendChatMessage(com, "SAY")
     end
 }
 
@@ -3616,13 +3617,3 @@ commands['wp show'] = {
         end
     end
 }
-
--- Function to handle a command
-function handleCommand(commandName, ...)
-    local command = commands[commandName]
-    if command then
-        command.execute(...)
-    else
-        print('Unknown command: ' .. commandName)
-    end
-end
