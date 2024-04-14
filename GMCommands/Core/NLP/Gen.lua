@@ -209,13 +209,16 @@ for _, command in ipairs(generatedItemCommands) do
     data = "{ sentence = \"" .. command.sentence .. "\", label = \"" .. command.label .. "\", item_id = " .. command.itemId .. " },"
     table.insert(Dataset_Items, data)
 end
-for key, value in ipairs(Dataset_Items) do
-    print(key, value)
-end
-for key, value in ipairs(Dataset_Teleport) do
-    print(key, value)
-end
+
+io.output(assert(io.open("gen3.txt", "w")))
+-- for key, value in ipairs(Dataset_Items) do
+--     io.write(key, value)
+-- end
+
+-- for key, value in ipairs(Dataset_Teleport) do
+--     io.write(key, value)
+-- end
 
 for key, value in ipairs(Dataset_regions) do
-    print(key, value)
+    io.write(key, value)
 end
